@@ -410,3 +410,19 @@
 </body>
 </html>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const teamGrid = document.querySelector('.team-grid');
+    const leftBtn = document.querySelector('.team-scroll-btn.left');
+    const rightBtn = document.querySelector('.team-scroll-btn.right');
+
+    leftBtn.addEventListener('click', () => {
+      teamGrid.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+      teamGrid.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+  });
+</script>
+
