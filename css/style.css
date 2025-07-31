@@ -1,4 +1,44 @@
 /* Main Styles for Thai Mar Website */
+.team-scroll-wrapper {
+  position: relative;
+}
+
+.team-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.team-scroll-btn:hover {
+  background-color: var(--accent-color);
+}
+
+.team-scroll-btn.left {
+  left: -20px;
+}
+
+.team-scroll-btn.right {
+  right: -20px;
+}
+
+/* Sakrij strelice na manjim ekranima */
+@media (max-width: 991.98px) {
+  .team-scroll-btn {
+    display: none;
+  }
+}
 
 /* Variables */
 :root {
