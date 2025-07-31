@@ -187,11 +187,14 @@
 
 /* Team Section Responsive Styles */
 @media (min-width: 1200px) {
-  .team-grid {
-    overflow-x: visible;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.team-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  padding-left: var(--spacing-md); /* ⬅️ Dodano ovo */
+}
 
   .team-member {
     flex: 0 0 280px;
