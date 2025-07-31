@@ -187,10 +187,17 @@
 
 /* Team Section Responsive Styles */
 @media (min-width: 1200px) {
-    .team-grid {
-        justify-content: center;
-    }
+  .team-grid {
+    overflow-x: visible;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .team-member {
+    flex: 0 0 280px;
+  }
 }
+
 
 @media (max-width: 991.98px) {
     .team-member {
