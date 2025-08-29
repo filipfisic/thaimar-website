@@ -218,3 +218,40 @@
     }
 }
 
+/* Videos responsive */
+@media (max-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+    .videos-section {
+      padding: 40px 0;
+    }
+    .video-play {
+      width: 56px;
+      height: 56px;
+      font-size: 22px;
+      line-height: 56px;
+    }
+  }
+  
+  /* Sakrij strelice kad su sve kartice vidljive */
+@media (min-width: 1200px) {
+    .team-scroll-btn {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .team-grid {
+      justify-content: center;   /* centrira kartice */
+      overflow-x: visible;       /* nema scrollanja */
+      padding-left: 0;           /* makni nepotrebni padding */
+    }
+  }
+  
