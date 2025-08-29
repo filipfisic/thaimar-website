@@ -3,6 +3,11 @@
   position: relative;
 }
 
+.contact-info p {
+  text-align: center;
+}
+
+
 .team-scroll-btn {
   position: absolute;
   top: 50%;
