@@ -267,7 +267,7 @@ p {
 .hero-section {
     height: 100vh;
     min-height: 600px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -304,22 +304,28 @@ p {
     display: flex;
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
+    align-items: center;  
 }
 
 .about-text, .about-image {
     flex: 1;
     text-align: justify;
-  max-width: 400px;
-  max-height: 400px;
   width: auto;
   height: auto;
   object-fit: contain;
+  justify-content: center;
 }
 
 .about-image img {
     border-radius: var(--border-radius-lg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: block;
+  max-width: 400px;
+  max-height: 400px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   margin-left: auto;
+  margin-right: auto;               /* <-- umjesto margin-left:auto; */
 }
 
 .benefits {
@@ -560,13 +566,10 @@ p {
 }
 
 .contact-info h2 {
-    text-align: left;
+    text-align: center;
 }
 
-.contact-info h2::after {
-    left: 0;
-    transform: none;
-}
+
 
 .address {
     margin-bottom: var(--spacing-lg);
@@ -859,3 +862,135 @@ footer p {
     line-height: 1.6;
 }
 
+/* --- Videos --- */
+.videos-section {
+    padding: 60px 0;
+    background: #faf9f7;
+  }
+  
+  .videos-section h2 {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .videos-section .section-subtitle {
+    text-align: center;
+    color: #6b6b6b;
+    margin-bottom: 28px;
+  }
+  
+  .video-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .video-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+    aspect-ratio: 16 / 9; /* čuva omjer bez JS-a */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  
+  .video-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  }
+  
+  .video-thumb {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transition: transform .2s ease;
+  }
+  
+  .video-card:hover .video-thumb {
+    transform: scale(1.02);
+  }
+  
+  .video-play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    font-size: 24px;
+    line-height: 64px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  }
+  
+  .video-play:focus {
+    outline: 2px solid #444;
+    outline-offset: 2px;
+  }
+  
+  .video-fallback {
+    display: inline-block;
+    color: #0055aa;
+    padding: 12px;
+  }
+  
+  /* --- Media (Galerija + Video carousel) --- */
+.media-section { padding: 60px 0; background: #fff; }
+.media-carousel { position: relative; }
+
+.media-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  border: none; cursor: pointer; z-index: 5;
+  background: var(--primary-color); color: var(--text-light);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  transition: background .2s ease, transform .2s ease;
+}
+.media-btn:hover { background: var(--accent-color); transform: translateY(-50%) scale(1.05); }
+.media-btn.left { left: -10px; }  /* možeš staviti 0 ako dodiruje rub */
+.media-btn.right { right: -10px; }
+
+.media-strip {
+  display: flex; gap: 18px; overflow-x: auto; scroll-behavior: smooth;
+  padding: 6px 8px 12px; /* mali unutarnji padding da ne režu rubovi */
+  scrollbar-width: thin; scrollbar-color: var(--primary-color) #eee;
+}
+.media-strip::-webkit-scrollbar { height: 8px; }
+.media-strip::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+
+.media-card {
+  flex: 0 0 340px;  /* širina kartice na desktopu */
+  border-radius: 14px; overflow: hidden; background: #000;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  position: relative; cursor: pointer;
+}
+.media-thumb {
+  width: 100%; height: 0; padding-top: 56.25%; /* 16:9 */
+  background-size: cover; background-position: center;
+  transition: transform .2s ease;
+}
+.media-card:hover .media-thumb { transform: scale(1.02); }
+
+.media-play {
+  position: absolute; inset: 0; margin: auto; width: 64px; height: 64px;
+  border-radius: 50%; border: none; background: rgba(255,255,255,.9);
+  font-size: 24px; line-height: 64px; text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+@media (max-width: 1024px) {
+  .media-card { flex-basis: 300px; }
+}
+@media (max-width: 640px) {
+  .media-card { flex-basis: 85vw; }     /* gotovo preko cijelog ekrana */
+  .media-btn { display: none; }         /* na mobitelu se scrolla prstom */
+}
+
+/* Sakrij strelice ako sve stane u vidljivo područje (desktop slučaj) */
+.media-carousel.no-arrows .media-btn { display: none !important; }
