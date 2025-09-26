@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thai Mar — Obavijesti</title>
+
+  <!-- Tvoj glavni stil (ako je u drugoj putanji, prilagodi) -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Dodatni minimalni stil samo za ovu stranicu */
+    .notice-wrap {
+      min-height: 100vh;
+      padding-top: 120px; /* zbog fiksnog headera */
+      padding-bottom: var(--spacing-xl);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(212,175,55,0.06), transparent 60%),
+        radial-gradient(900px 500px at 85% 20%, rgba(0,100,0,0.06), transparent 60%),
+        var(--bg-light);
+      display: flex;
+      align-items: center;
+    }
+
+    .notices {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .notice-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: clamp(18px, 3vw, 28px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .notice-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+    }
+
+    .notice-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: var(--text-light);
+      font-size: 26px;
+      box-shadow: 0 6px 16px rgba(212,175,55,0.25);
+      flex-shrink: 0;
+    }
+
+    .notice-content h2 {
+      margin: 0 0 6px 0;
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+      color: var(--primary-color);
+      text-align: left;
+    }
+    .notice-content p {
+      margin: 0;
+      color: #4a4a4a;
+      font-size: clamp(1rem, 1.4vw, 1.05rem);
+      line-height: 1.55;
+    }
+
+    /* CTA info traka ispod kartica (opcionalno) */
+    .notice-cta {
+      margin-top: var(--spacing-md);
+      padding: 14px 16px;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 10px;
+      background: #fff;
+      color: #4a4a4a;
+      font-size: 0.98rem;
+    }
+
+    /* Responsivnost */
+    @media (max-width: 640px) {
+      .notice-card {
+        grid-template-columns: 1fr;
+      }
+      .notice-icon {
+        width: 48px; height: 48px; font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ako već imaš #header u includeu, možeš ukloniti ovaj blok -->
+  <header id="header">
+    <div class="container">
+      <a class="logo" href="/"><img src="images/logo.png" alt="Thai Mar"></a>
+      <nav class="main-nav" aria-label="Glavna navigacija">
+        <ul>
+          <li><a href="/">Naslovnica</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="notice-wrap">
+    <div class="container">
+      <div class="notices" role="status" aria-live="polite">
+        <!-- Obavijest 1 -->
+        <article class="notice-card">
+          <div class="notice-icon" aria-hidden="true">ℹ️</div>
+          <div class="notice-content">
+            <h2>Ova stranica više nije dostupna</h2>
+            <p>Traženi sadržaj je uklonjen ili privremeno nedostupan.</p>
+          </div>
+        </article>
+
+        <!-- Obavijest 2 -->
+        <article class="notice-card">
+          <div class="notice-icon" aria-hidden="true">⛔</div>
+          <div class="notice-content">
+            <h2>Nažalost, rezervacija masaža online više nije moguća</h2>
+          </div>
+        </article>
+
+        <!-- Opcionalno: kratka CTA poruka -->
+        <div class="notice-cta">
+          Imate pitanje? Nazovite nas ili pošaljite poruku — rado ćemo pomoći oko termina i informacija.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div class="container footer-content">
+      <div class="footer-info-left">
+        <p><i class="fa fa-map-marker"></i>Thai Mar, Split</p>
+        <p><i class="fa fa-phone"></i>+385 XX XXX XXXX</p>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      </div>
+      <div class="footer-info-right">
+        <p><i class="fa fa-envelope"></i>info@thaimar.hr</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Thai Mar</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Povratak na vrh">↑</button>
+
+  <script>
+    // godina u footeru
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // back to top
+    const toTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) toTop.classList.add('visible');
+      else toTop.classList.remove('visible');
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+  <!-- Ako koristiš Font Awesome iz CDN-a, dodaj:
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  -->
+</body>
+</html>
